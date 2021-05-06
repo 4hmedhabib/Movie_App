@@ -14,23 +14,38 @@ const listMovie = (url) => {
     }).then((data) => {
         // main.innerHTML = getList()
         const getList = () => {
-                return data.results.map(movie => {
-                    console.log(movie);
-                });
-            }
-            // data.results.forEach(movie => {
-            //     const div = document.createElement('div')
-            //     const img = document.createElement('img')
-            //     const text = document.createElement('h2')
-            //     text.innerHTML = movie.title;
-            //     img.src = imgPath + movie.poster_path;
+            return data.results.map(movie => {
+                console.log(movie);
+                return `
+                    <div class="card">
+                    <div class="img">
+                        <img src="${imgPath + movie.poster_path}">
+                    </div>
+                    <div class=" desc ">
+                        <div class="title">
+                            ${movie.title}
+                        </div>
+                        <div class="middle ">
+                            <div class="rating ">
+                                <img src="./images/rating.png" alt="${movie.title}">
+                                <p>${movie.vote_average}</p>
+                            </div>
+                            <div class="reviews ">
+                                <p>${movie.vote_count} reviews</p>
+                            </div>
+                        </div>
+                        <div class="released">
+                            <p>released date - ${movie.release_date}</p>
+                        </div>
 
-        //     div.appendChild(img)
-        //     div.appendChild(text)
-        //     main.appendChild(div)
-        // });
-        getList()
-            // main.innerHTML = getList()
+                    </div>
+                </div>
+                `
+            });
+        }
+
+
+        main.innerHTML = getList()
     })
 }
 

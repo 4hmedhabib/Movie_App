@@ -50,3 +50,16 @@ const listMovie = (url) => {
 }
 
 listMovie(apiLink);
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    main.innerHTML = ''
+    const searchTerm = search.value;
+
+    if (search) {
+        listMovie(searchApi + searchTerm)
+        search.value = ''
+    }
+
+
+})
